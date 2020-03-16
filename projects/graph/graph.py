@@ -87,7 +87,17 @@ class Graph:
 
         This should be done using recursion.
         """
-        pass  # TODO
+        # if visited is none, set visited to new set
+        if visited is None:
+            visited = set()
+        # add starting vertex to visited set
+        visited.add(starting_vertex)
+        # print starting vertex
+        print(starting_vertex)
+        # if vertex isn't in visited set, recurse
+        for vertex in self.vertices[starting_vertex]:
+            if vertex not in visited:
+                self.dft_recursive(vertex, visited)
 
     def bfs(self, starting_vertex, destination_vertex):
         """
@@ -163,7 +173,22 @@ class Graph:
 
         This should be done using recursion.
         """
-        pass  # TODO
+        if visited is  None:
+            visited = set()
+        if path is None:
+            path = []
+        #  if it's at the target value, return the path
+        if starting_vertex not in visited:
+            visited.add(starting_vertex)
+            path_copy = path.copy()
+            path_copy.append(starting_vertex)
+            if starting_vertex is target_vertex:
+               return path_copy 
+        #  It calls for the dfs recursive on each unvisited neighbor
+            for neighbor in self.get_neighbors(starting_vertex):
+                new_path = self.dfs_recursive(neighbor, target_vertex, visited, path_copy)
+                if new_path is not None:
+                    return new_path
 
 if __name__ == '__main__':
     graph = Graph()  # Instantiate your graph
