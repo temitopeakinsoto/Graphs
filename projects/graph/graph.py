@@ -19,6 +19,7 @@ class Graph:
     def add_edge(self, v1, v2):
         """
         Add a directed edge to the graph.
+        where v1 = fromVert and v2 = toVert
         """
         if v1 in self.vertices and v2 in self.vertices:
             # add v2 to the vertices at v1
